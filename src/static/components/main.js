@@ -7,7 +7,8 @@ const arm2Length = 100;
 const arm3Length = 20;
 
 let locationString;
-console.log("a")
+let lastLocationString;
+let lastSent;
 
         // Fixed joint position (base of the robot arm)
 const fixedJoint = { x: canvas.width / 2, y: canvas.height / 2 };
@@ -25,14 +26,22 @@ const angleDisplay4 = document.getElementById("angle-display4");
 
 const sliderList = document.getElementsByClassName("slider");
 
+setInterval(() => {
+    if (lastSent !== locationString) {
+        sendSliderValue(lastLocationString)
+        lastSent = lastLocationString
+    }
+}, 1000)
+
         // Update the angle display when the sliders change
 slider1.addEventListener("input", function() {
     
     angleDisplay1.textContent = slider1.value;
 
     locationString = slider1.value +"." + slider2.value +"." + slider3.value +"." + slider4.value
-
-    sendSliderValue(locationString)
+    
+    lastLocationString = locationString
+    // sendSliderValue(locationString)
 
     drawArm();
 });
@@ -43,7 +52,8 @@ slider2.addEventListener("input", function() {
 
     locationString = slider1.value +"." + slider2.value +"." + slider3.value +"." + slider4.value
 
-    sendSliderValue(locationString)
+    lastLocationString = locationString
+    // sendSliderValue(locationString)
 
     drawArm();
 });
@@ -54,7 +64,8 @@ slider3.addEventListener("input", ()=>{
 
     locationString = slider1.value +"." + slider2.value +"." + slider3.value +"." + slider4.value
 
-    sendSliderValue(locationString)
+    lastLocationString = locationString
+    // sendSliderValue(locationString)
 
     drawArm();
     
@@ -63,13 +74,14 @@ slider3.addEventListener("input", ()=>{
 
 slider4.addEventListener("input", ()=>{
 
-        angleDisplay4.textContent = slider4.value;
+    angleDisplay4.textContent = slider4.value;
 
-        locationString = slider1.value +"." + slider2.value +"." + slider3.value +"." + slider4.value
+    locationString = slider1.value +"." + slider2.value +"." + slider3.value +"." + slider4.value
+    
+    lastLocationString = locationString
+    // sendSliderValue(locationString)
 
-        sendSliderValue(locationString)
-
-        drawArm();
+    drawArm();
 
 })
 
