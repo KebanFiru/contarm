@@ -87,14 +87,14 @@ slider4.addEventListener("input", ()=>{
 
 function drawArm() {
         // First arm angle (controlled by slider1, starting from +Y axis (90 degrees))
-        const angle1 = parseFloat(slider1.value) * Math.PI / 180; // Convert slider1 value to radians
-        const angle2 = parseFloat(slider2.value) * Math.PI / 180; // Convert slider2 value to radians
-        const angle3 = parseFloat(slider3.value) * Math.PI / 180;
-        const angle4 = parseFloat(slider4.value) * Math.PI / 180; // Angle from slider4 to rotate arm3 and arm3.1 together
+    const angle1 = parseFloat(slider1.value) * Math.PI / 180; // Convert slider1 value to radians
+    const angle2 = parseFloat(slider2.value) * Math.PI / 180; // Convert slider2 value to radians
+    const angle3 = parseFloat(slider3.value) * Math.PI / 180;
+    const angle4 = parseFloat(slider4.value) * Math.PI / 180; // Angle from slider4 to rotate arm3 and arm3.1 together
     
         // Calculate position of the first joint (end of the first arm)
         const arm1End = {
-            x: fixedJoint.x + arm1Length * -Math.cos(angle1),
+        x: fixedJoint.x + arm1Length * -Math.cos(angle1),
             y: fixedJoint.y + arm1Length * -Math.sin(angle1)
         };
     
